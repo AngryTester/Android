@@ -24,7 +24,9 @@ public class FirstActivity extends Activity {
 //				Toast.makeText(FirstActivity.this, "This is First Activity",
 //						Toast.LENGTH_SHORT).show();
 //				finish();
-				Intent intent = new Intent(FirstActivity.this,SecondActivity.class);
+//				Intent intent = new Intent(FirstActivity.this,SecondActivity.class);//œ‘ Ω
+				Intent intent = new Intent("com.example.activitytest.ACTION_START");//“˛ Ω
+				intent.addCategory("com.example.activitytest.MY_CATEGORY");
 				startActivity(intent);
 				
 			}
