@@ -1,8 +1,11 @@
 package com.example.activitytest;
 
+
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,10 +27,16 @@ public class FirstActivity extends Activity {
 //				Toast.makeText(FirstActivity.this, "This is First Activity",
 //						Toast.LENGTH_SHORT).show();
 //				finish();
-//				Intent intent = new Intent(FirstActivity.this,SecondActivity.class);//显式
-				Intent intent = new Intent("com.example.activitytest.ACTION_START");//隐式
-				intent.addCategory("com.example.activitytest.MY_CATEGORY");
-				startActivity(intent);
+				Intent intent = new Intent(FirstActivity.this,SecondActivity.class);//显式
+//				Intent intent = new Intent("com.example.activitytest.ACTION_START");//隐式
+//				intent.addCategory("com.example.activitytest.MY_CATEGORY");
+				
+//				String data = "Hello SecondActivity";
+//				intent.putExtra("extra_data", data);
+//				Intent intent = new Intent(Intent.ACTION_VIEW);
+//				intent.setData(Uri.parse("http://www.baidu.com"));
+				
+				startActivityForResult(intent,1);//1作为唯一标识
 				
 			}
 		});
@@ -50,4 +59,19 @@ public class FirstActivity extends Activity {
 		}
 		return true;
 	}
+	
+	@Override
+	protected void onActivityResult(int requestCode,int resultCode,Intent data){
+		switch(requestCode){
+		case 1:
+			if(resultCode == RESULT_OK){
+				String returnData = data.getStringExtra("data_return");
+//				Log.d("First Activity", returnData);
+				Toast.makeText(FirstActivity.this, returnData, Toast.LENGTH_SHORT).show();
+			}
+			break;
+		default:
+		}
+	}
+	
 }
