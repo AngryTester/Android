@@ -18,6 +18,7 @@ public class FirstActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.d("FirstActivity", "Task id is "+getTaskId());
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.first_layout);
 		Button button1 = (Button) findViewById(R.id.button1);
@@ -36,7 +37,7 @@ public class FirstActivity extends Activity {
 //				Intent intent = new Intent(Intent.ACTION_VIEW);
 //				intent.setData(Uri.parse("http://www.baidu.com"));
 				
-				startActivityForResult(intent,1);//1作为唯一标识
+				startActivity(intent);//1作为唯一标识
 				
 			}
 		});
