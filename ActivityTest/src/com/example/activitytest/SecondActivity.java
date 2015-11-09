@@ -1,6 +1,7 @@
 package com.example.activitytest;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,7 +11,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class SecondActivity extends Activity{
+public class SecondActivity extends BaseActivity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -39,6 +40,13 @@ public class SecondActivity extends Activity{
 		intent.putExtra("data_return", "Hello FirstActivity");
 		setResult(RESULT_OK,intent);
 		finish();
+	}
+	
+	public static void actionStart(Context context,String data1,String data2){
+		Intent intent = new Intent(context,SecondActivity.class);
+		intent.putExtra("param1", data1);
+		intent.putExtra("param2", data2);
+		context.startActivity(intent);
 	}
 
 }

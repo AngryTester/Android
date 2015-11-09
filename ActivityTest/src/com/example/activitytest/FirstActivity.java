@@ -14,7 +14,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class FirstActivity extends Activity {
+public class FirstActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -28,7 +28,7 @@ public class FirstActivity extends Activity {
 //				Toast.makeText(FirstActivity.this, "This is First Activity",
 //						Toast.LENGTH_SHORT).show();
 //				finish();
-				Intent intent = new Intent(FirstActivity.this,SecondActivity.class);//显式
+//				Intent intent = new Intent(FirstActivity.this,SecondActivity.class);//显式
 //				Intent intent = new Intent("com.example.activitytest.ACTION_START");//隐式
 //				intent.addCategory("com.example.activitytest.MY_CATEGORY");
 				
@@ -37,7 +37,7 @@ public class FirstActivity extends Activity {
 //				Intent intent = new Intent(Intent.ACTION_VIEW);
 //				intent.setData(Uri.parse("http://www.baidu.com"));
 				
-				startActivity(intent);//1作为唯一标识
+				SecondActivity.actionStart(FirstActivity.this, "data1", "data2");
 				
 			}
 		});
