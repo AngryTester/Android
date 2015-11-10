@@ -1,25 +1,41 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal" >
+    android:layout_height="match_parent" 
+    android:stretchColumns="1" >
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+    <TableRow>
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+        <TextView
+            android:layout_height="wrap_content"
+            android:text="Account:" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+        <EditText
+            android:id="@+id/account"
+            android:layout_height="wrap_content"
+            android:hint="Input your account" />
+    </TableRow>
 
-</LinearLayout>
+    <TableRow>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:text="Password:" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_height="wrap_content"
+            android:hint="Input your password" />
+    </TableRow>
+    
+        <TableRow>
+
+        <Button
+            android:id="@+id/Login"
+            android:layout_height="wrap_content"
+            android:layout_span="2"
+            android:text="Login" />
+        
+    </TableRow>
+
+</TableLayout>

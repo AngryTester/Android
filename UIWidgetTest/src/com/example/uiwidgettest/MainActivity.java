@@ -22,14 +22,14 @@ public class MainActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		Button button = (Button) findViewById(R.id.button1);
+		Button button = (Button) findViewById(R.id.Login);
 		button.setOnClickListener(this);
 	}
 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {// 布局内可能有多个按钮
-		case R.id.button1:
+		case R.id.Login:
 			// ImageView imageView = (ImageView)findViewById(R.id.image_view);
 			// imageView.setImageResource(R.drawable.hello);
 //			ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_bar);
@@ -57,11 +57,21 @@ public class MainActivity extends Activity implements OnClickListener {
 //				}
 //			});
 //			dialog.show();
-			ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
-			progressDialog.setTitle("This is ProgressDialog");
-			progressDialog.setMessage("Loading...");
-			progressDialog.setCancelable(true);
-			progressDialog.show();
+//			ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
+//			progressDialog.setTitle("This is ProgressDialog");
+//			progressDialog.setMessage("Loading...");
+//			progressDialog.setCancelable(true);
+//			progressDialog.show();
+			
+			TextView account = (TextView)findViewById(R.id.account);
+			TextView password = (TextView)findViewById(R.id.password);
+			if(account.getText().toString().equals("admin")&&password.getText().toString().equals("123456")){
+				Toast.makeText(MainActivity.this, "login success!", Toast.LENGTH_SHORT).show();
+			} else
+				Toast.makeText(MainActivity.this, "login failed!", Toast.LENGTH_SHORT).show();
+				
+			
+			
 			break;
 		default:
 			break;
