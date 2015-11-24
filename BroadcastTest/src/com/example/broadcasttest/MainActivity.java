@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,9 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 	
 	private IntentFilter intentFilter;
+	private LocalReceiver localReceiver;
+	private LocalBroadcastManager localBroadcastManager;
+	
 	private NetWorkChangeReceiver networkChangeReceiver;
 	
 	
@@ -27,14 +31,20 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
+		
+		localBroadcastManager = LocalBroadcastManager.getInstance(this);
 		Button button = (Button)findViewById(R.id.button);
 		button.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v){
-				Intent intent = new Intent("com.example.broadcasttest.MY_BROADCAST");
-				sendOrderedBroadcast(intent,null);
+				Intent intent = new Intent("com.example.broadcasttest.LOCAL_BROADCAST");
+				localBroadcastManager.sendBroadcast(intent);
 			}
 		});
+		intentFilter = new IntentFilter();
+		intentFilter.addAction("com.example.broadcasttest.LOCAL_BROADCAST");
+		localReceiver = new LocalReceiver();
+		localBroadcastManager.registerReceiver(localReceiver, intentFilter);
 	}
 
 	@Override
@@ -73,7 +83,15 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onDestroy(){
 		super.onDestroy();
-		unregisterReceiver(networkChangeReceiver);
+		localBroadcastManager.unregisterReceiver(localReceiver);
+	}
+	
+	class LocalReceiver extends BroadcastReceiver{
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			Toast.makeText(context, "received local broadcast", Toast.LENGTH_SHORT).show();
+		}
+		
 	}
 	
 }
