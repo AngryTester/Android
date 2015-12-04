@@ -3,33 +3,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
+
     <TableRow>
-        <TextView 
+
+        <TextView
             android:layout_height="wrap_content"
-            android:text="Account:"/>
-        <EditText 
+            android:text="Account:" />
+
+        <EditText
             android:id="@+id/account"
             android:layout_height="wrap_content"
-            android:hint="Input your account"/>
+            android:hint="Input your account" />
     </TableRow>
-    
+
     <TableRow>
-        <TextView 
+
+        <TextView
             android:layout_height="wrap_content"
-            android:text="Password:"/>
-        <EditText 
+            android:text="Password:" />
+
+        <EditText
             android:id="@+id/password"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword" />
     </TableRow>
-    
-    <TableRow >
-        <Button 
+
+    <TableRow>
+
+        <CheckBox
+            android:id="@+id/remember_pass"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:text="remember password" />
+    </TableRow>
+
+    <TableRow>
+
+        <Button
             android:id="@+id/login"
             android:layout_height="wrap_content"
             android:layout_span="2"
-            android:text="Login"/>
+            android:text="Login" />
     </TableRow>
-    
+
 </TableLayout>
